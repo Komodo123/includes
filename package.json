@@ -1,0 +1,30 @@
+{
+  "name": "@thrall/includes",
+  "version": "1.0.2",
+  "description": "A more powerful includes function supporting primitives, arrays, wildcards, negation, and regular expressions.",
+  "keywords": [
+    "pattern",
+    "pattern matching",
+    "regex",
+    "includes",
+    "regular expression",
+    "wildcard",
+    "negation"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Komodo123/includes.git"
+  },
+  "license": "MIT",
+  "type": "module",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "scripts": {
+    "prepublish": "tsc",
+    "test": "ts-node test.ts"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.4"
+  }
+}

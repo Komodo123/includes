@@ -1,6 +1,6 @@
 {
   "name": "@thrall/includes",
-  "version": "1.0.0",
+  "version": "1.0.5",
   "description": "A more powerful includes function supporting primitives, arrays, wildcards, negation, and regular expressions.",
   "keywords": [
     "pattern",
@@ -21,7 +21,7 @@
   "types": "index.d.ts",
   "scripts": {
     "prepublish": "tsc",
-    "test": "ts-node test.ts"
+    "test": "ts-node --esm test.ts"
   },
   "devDependencies": {
     "ts-node": "^10.9.1",

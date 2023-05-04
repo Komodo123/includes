@@ -27,6 +27,9 @@ export function includes<T extends Primitive>(
     allowWildHaystack: true,
   }
 ): boolean {
+  needle = coerce(needle);
+  haystack = coerce(haystack);
+
   if (Array.isArray(needle)) {
     // e.x. needle [], haystack = "*"
     if (
@@ -78,6 +81,8 @@ export function includes<T extends Primitive>(
     haystack !== NEGATION + WILDCARD
   ) {
     return true;
+  } else if (haystack === NEGATION + WILDCARD) {
+    return false;
   }
 
   if (haystack instanceof RegExp) {
@@ -89,4 +94,21 @@ export function includes<T extends Primitive>(
   }
 
   return haystack === needle;
+}
+
+function coerce<T extends Primitive>(pattern: Pattern<T>): Pattern<T> {
+  if (Array.isArray(pattern)) {
+    pattern = <[]>pattern.map(coerce);
+  } else if (typeof pattern === "string") {
+    if (pattern.indexOf("*") !== -1 && pattern.indexOf("-") !== 0) {
+      let intermediate;
+
+      intermediate = pattern.replaceAll("*", ".*");
+      intermediate = new RegExp(`^${intermediate}$`);
+
+      pattern = intermediate;
+    }
+  }
+
+  return pattern;
 }

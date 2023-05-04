@@ -1,5 +1,5 @@
 import assert from "node:assert";
-import { includes } from "./index";
+import { includes } from "./index.js";
 
 assert(includes("google.com", "*") === true);
 assert(includes("google.com", "google.com") === true);
@@ -40,3 +40,9 @@ assert(
     [/apple/, "-google.com", "*"]
   ) === false
 );
+assert(includes("a*", ["-apple.com", "*"]) === false);
+assert(includes("a*", ["apple.com", "amazon.com"]) === true);
+assert(includes("ap*", ["apple.com", "google.com", "amazon.com"]) === true);
+assert(includes("*o*", "google.com") === true);
+assert(includes("goo*", "google.com") === true);
+assert(includes("*le", "google.com") === false);

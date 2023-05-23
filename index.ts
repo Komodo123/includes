@@ -4,7 +4,7 @@ export const NEGATION = "-";
 export type Wildcard = typeof WILDCARD;
 export type Negation = typeof NEGATION;
 
-type Primitive = bigint | boolean | null | number | string | undefined;
+export type Primitive = bigint | boolean | null | number | string | undefined;
 
 export type Pattern<T extends Primitive> =
   | Wildcard
